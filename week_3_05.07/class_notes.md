@@ -32,5 +32,9 @@ add element to beyond the origin size of array
 
 ## Stack Structure
 
+ * push
+ * pop
+ * peaks
+
 
 ## Hash Table
