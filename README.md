@@ -18,11 +18,11 @@
 
 ------
 
-
 **Class Example**:
 
 Find the duplicate elements in the array
 
+------
 
 **Homework**:
 
