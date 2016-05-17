@@ -6,6 +6,8 @@
 
 ### Class Content
 
+
+
 **Key Notes**:
 
 1. Big O : efficiency running time
@@ -17,12 +19,12 @@
 ------
 
 
-`Class Example`:
+**Class Example**:
 
 Find the duplicate elements in the array
 
 
-`Homework`:
+**Homework**:
 
 1. Find the element that appears once in a **sorted array** where all other elements appear twice one after another. Find that element in O(logn) complexity.
 
