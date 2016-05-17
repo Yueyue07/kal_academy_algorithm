@@ -3,7 +3,6 @@
 
 ## Week 1 04.23
 
----
 
 **Class Content**
 
