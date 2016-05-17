@@ -52,6 +52,74 @@ String.prototype.missParenth = function() {
 
 ```
 
+#### Kal Solution 1
+> using counter
+
+**hints**
+  * using counter
+  * if open parenthesis, ++count
+  * if close parenthesis, --count
+  * **same idea of the question:** Majority Element, A majority element in an array A[] of size n is an element that appears more than n/2 times (and hence there is at most one such element)
+
+```javascript
+String.prototype.missParenth = function() {
+  var count = 0;
+  for (var i = 0; i < this.length; i++) {
+    if (this.charAt(i) === '(') {
+      ++count;
+    }
+    if (this.charAt(i) ===')') {
+      --count;
+    }
+  }
+  console.log(count);
+  if ( count > 0) {
+    return 'missing close parenthesis';
+  }
+  if ( count < 0) {
+    return  'missing open parenthesis';
+  }
+  if (count === 0) {
+    return 'no parenthesis missing';
+  }
+};
+
+'-2*(3+5(sasdfasdfasd)'.missParenth();
+```
+
+#### Kal Solution 2
+> using stack structure
+
+**hints**
+ * stack structure
+ * loop through the string
+   * '(' push to stack
+   * if ')' pop stack
+
+
+```javascript
+String.prototype.missParenth = function() {
+  var stack = [];
+  var ele;
+  for (var i = 0; i < this.length; i++) {
+    if (this.charAt(i) === '(') {
+      stack.push(i);
+    }
+    if (this.charAt(i) === ')') {
+      ele = stack.pop();
+      if (!ele) {
+        return 'missing open parenthesis';
+      }
+    }
+  }
+  if (stack.length > 0) {
+    return 'missing close parenthesis';
+  } else {
+    return 'parenthesis is not missing';
+  }
+};
+```
+
 #### 8.
 
 Evaluate an expression given only single digits and only 2 operators * and +.
@@ -79,7 +147,7 @@ Evaluate an expression given only single digits and only 2 operators * and +.
 Solution:
 
 ```javascript
-String.prototype.expressEvalu = function() {
+String.prototype.evaluate = function() {
   var arr = this.split('');
   var operands = [];
   var operators = [];
@@ -92,6 +160,7 @@ String.prototype.expressEvalu = function() {
     }    
   }
 
+  // not a good solution to mess up queue and stack
   if(operators[0] === '*') {
     value = operands.shift() * operands.shift() + operands.shift(); //queue
   } else {
@@ -101,9 +170,55 @@ String.prototype.expressEvalu = function() {
   return value;
 };
 
-'2*3+4'.expressEvalu();
+'2*3+4'.evaluate();
 ```
 
+#### Kal Solution
+>using stack
+
+**hints**
+* save value to stack structure
+* if is multiple sign, pop out element multiply next element
+* save the value into stack
+* add up all the value in the stack
+
+```
+2*3+1
+
+2+3*1
+```
+
+```javascript
+String.prototype.evaluate = function() {
+  var stack = [];
+  var sum = 0;
+  // loop through string
+  for (var i = 0; i < this.length; i++) {
+  // if number, save to array
+    if (parseInt(this.charAt(i)) && Number.isInteger(parseInt(this.charAt(i)))) {
+      stack.push(parseInt(this.charAt(i)));
+    }
+
+  // if * pop element out * current element
+   if (this.charAt(i) === '*') {
+     stack.push(stack.pop() * this.charAt(i + 1));
+     i = i + 1;
+   }
+
+  // if +, do nothing,
+
+  }
+  // loop through stack and add elements up
+  while(stack.length) {
+    sum = sum + stack.pop();
+  }
+
+  return sum;
+
+};
+
+'2*3+4'.evaluate();
+```
 
 
 
