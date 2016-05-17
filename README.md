@@ -1,1 +1,1 @@
-# kal_academy_algorithm
+# Kal Academy - Data Structures and Algorithms Class
