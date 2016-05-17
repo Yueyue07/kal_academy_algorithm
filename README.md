@@ -4,9 +4,9 @@
 ## Week 1 04.23
 
 
-**Class Content**
+### Class Content
 
-`Key Notes`:
+**Key Notes**:
 
 1. Big O : efficiency running time
 
