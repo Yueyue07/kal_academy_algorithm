@@ -74,3 +74,36 @@ Work on Last Week's homework
 2. Evaluate an expression given only single digits and only 2 operators * and +.
 
 3. Reverse a stack and put the reversed value back in the same stack. You can use only one other stack and a temp variable.
+
+---
+
+## Week 3 05.07
+
+
+### Class Content
+
+
+
+**Key Notes**:
+
+1. `Array Redimension`: array hits capacity, create new array with double size, copy old array to new array and destroy old array
+
+2. 1 bit : 1 / 0 (lowest memory); 1 byte: 8 bits
+
+3. int: 32 bits / 8 bytes; long: 64 bits / 8 bytes
+
+4. int[5]: array of size 160 (160 bits)
+
+5. location_index = value % array.length; % reminder: make sure location_index < array.length
+
+6. Handle Negative Case First
+
+7. Dictionary O(1): 1st hasCode(key) where key is string; 2nd abs(step1); 3rd step2 % size of buckets array -> obtain the  location in buckets array to save pointer
+
+------
+
+**Class Example**:
+
+Queue: enqueue; dequeue
+
+------
