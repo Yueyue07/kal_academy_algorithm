@@ -37,3 +37,40 @@ Find the duplicate elements in the array
 5. Search an element in an array where difference between adjacent elements is 1.
 
 6. Given an array of numbers, split the array into two where one array contains the sum of n-1 numbers and the other array with all the n-1 elements.
+
+---
+
+## Week 2 04.30
+
+
+### Class Content
+
+
+
+**Key Notes**:
+
+1. Binary Search: `only work for sorted array`
+
+2. Efficient and Manageable Code (trade-off) `find more than one magic index, considering linear search`
+
+3. Always stick to one pattern of structure and algorithm
+
+4. Queue (FIFO)
+
+5. Stack (LIFO)
+
+------
+
+**Class Example**:
+
+Work on Last Week's homework
+
+------
+
+**Homework**:
+
+1. Find missing parenthesis in a given expression – 2 * ( 3 + 5(sasdfasdfasd)
+
+2. Evaluate an expression given only single digits and only 2 operators * and +.
+
+3. Reverse a stack and put the reversed value back in the same stack. You can use only one other stack and a temp variable.
