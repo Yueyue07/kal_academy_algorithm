@@ -1,8 +1,9 @@
 # Kal Academy - Data Structures and Algorithms
 
 
-Week 1 04.23
-------
+## Week 1 04.23
+
+---
 
 **Class Content**
 
@@ -13,6 +14,8 @@ Week 1 04.23
 2. O(1), O(logn), O(n), O(nlogn), O(n^2), ... , O(n^n), where n is size of data
 
 3.  Always consider worst case in terms of Big O
+
+------
 
 
 `Class Example`:
