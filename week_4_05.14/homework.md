@@ -73,6 +73,7 @@ String.prototype.unique = function() {
 'abcdef'.unique()
 //true
 'abbb'.unique()
+//false
 ```
 
 #### 2. Given two strings, write a method to decide if one is a permutation of the other?
@@ -135,7 +136,7 @@ String.prototype.permute = function (string) {
 
   var dictionary = new Object();
   for (var i = 0; i < this.length; i++) {
-    if (!dictionary[this.charAt(i)]) {
+    if (!dictionary[this.charAt(i)]) { // initializing value as 1
       dictionary[this.charAt(i)] = 1;
     } else {
       dictionary[this.charAt(i)] += 1;    
@@ -148,6 +149,7 @@ String.prototype.permute = function (string) {
     }
       dictionary[string.charAt(j)] -= 1;      
   }
+
   for (key in dictionary) {
     if (dictionary[key] !== 0) return false;
   }
@@ -158,9 +160,7 @@ String.prototype.permute = function (string) {
 'abcdef'.permute('fedcab');
 ```
 
-#### 3.
-
-Write a method to replace all spaces in a string with ‘%20’.
+#### 3.Write a method to replace all spaces in a string with ‘%20’.
 
 Example
 
@@ -176,22 +176,84 @@ Solutions
   * loop through array
   * find the blank space and replace it with %20
 
-O(n)
+
+#### Solution 1 A combination of Array and String
+O(3n)
 
 ```javascript
 
 String.prototype.replace = function() {
-   var strArr = this.split('');
-    for (var i = 0; i < strArr.length; i++) {
+   var strArr = this.split(''); // O(n)
+    for (var i = 0; i < strArr.length; i++) { // O(n)
       if (strArr[i] === ' ') {
         strArr[i] = null;
         strArr[i] = '%20';
       }
     }
-    return strArr.join('');
+    return strArr.join(''); // O(n)
 };
 
 'a b'.replace();
 // 'a%20b'
 
+```
+
+#### Solution 2
+
+O(n)
+
+```javascript
+String.prototype.replace = function() {
+  // initializing
+  var replaceStr = new String();
+
+  // Loop Through String and Check space
+  for (var i = 0; i < this.length; i++) {
+    if (this.charAt(i) === ' ') {
+      replaceStr = replaceStr + '%20';
+    } else {
+      replaceStr = replaceStr + this.charAt(i);
+    }
+  }
+
+  return replaceStr
+
+};
+
+'a b'.replace();
+
+```
+
+####4. 1.	Implement a method to perform a basic string compression using the counts of repeated characters. For example, the string aabccccaaa would become a2b1c4a3. If the compressed string would not become smaller than the original string, your method should return the original string.
+
+
+#### Solution 1 Dictionary
+
+O(n1*n2)
+
+
+
+```javascript
+String.prototype.comparison = function() {
+  // Initializing
+  var dictionary = new Object();
+  var comparisonStr = new String();
+
+  for (var i = 0; i < this.length; i++) {
+    if (!dictionary[this.charAt(i)]) {
+      dictionary[this.charAt(i)] = 1;
+    } else {
+      dictionary[this.charAt(i)] += 1;
+    }
+  }
+
+  for (var key in dictionary) {
+    comparisonStr += key + dictionary[key].toString();
+  }
+
+  return comparisonStr.length < this.length ? comparisonStr : this;
+};
+
+'aabbbbcdddd'.comparison();
+// 'a2b4c1d4'
 ```
