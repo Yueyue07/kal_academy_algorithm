@@ -18,7 +18,7 @@ Output: 4
 
 Solutions:
 
-##### Solution 1:
+##### Solution 1: Cut Array and Create New Array
 
 O(logn)
 
@@ -65,7 +65,50 @@ Array.prototype.appearOne = function() {
 
 ```
 
-##### Solution 2:
+#### Solution 2: Same Array and Different Indexes
+> even(first occurrence) odd(second occurrence) Target odd(first occurrence) even (second occurrence)
+
+
+
+```javascript
+Array.prototype.appearOne = function() {
+
+  // recursion
+   function search (arr, low, high) {
+    // Exit Execution Condition
+    if (low === high) {
+      return arr[low];
+    }
+
+    // initialize variables
+    var mid = (high + low) / 2;
+
+    if (mid % 2 === 0) {
+      if (arr[mid] ===  arr[mid + 1]) {
+        return search(arr, mid + 2, high);
+      } else {
+        return search(arr, low, mid);
+      }
+    } else {
+      if (arr[mid] === arr[mid - 1]) {
+        return search(arr, mid + 1, high);
+      } else {
+        return search(arr, low, mid - 1);
+      }
+    }
+  };
+
+  // call
+  return search(this, 0, this.length - 1);
+
+};
+
+[1, 1, 2, 2, 3, 4, 4].appearOne();
+
+```
+
+
+##### Solution 3:
 
 O(n)
 
