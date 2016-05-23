@@ -94,7 +94,7 @@ Work on Last Week's homework
 
 4. int[5]: array of size 160 (160 bits)
 
-5. location_index = value % array.length; % reminder: make sure location_index < array.length
+5. location_index = value % array.length; % remainder: make sure location_index < array.length
 
 6. Handle Negative Case First
 
