@@ -4,10 +4,7 @@
 ## Array
 
 
-#### 1.
-
-
-Find the element that appears once in a **sorted array** where all other elements appear twice one after another. Find that element in O(logn) complexity.
+### 1.Find the element that appears once in a **sorted array** where all other elements appear twice one after another. Find that element in O(logn) complexity.
 
 
 ```
@@ -18,9 +15,7 @@ Output: 4
 
 Solutions:
 
-##### Solution 1: Cut Array and Create New Array
-
-O(logn)
+##### Solution 1: Cut Array and Create New Array O(logn)
 
 **hints**
 * cut the array into half: binary search;
@@ -65,7 +60,7 @@ Array.prototype.appearOne = function() {
 
 ```
 
-#### Solution 2: Same Array and Different Indexes
+#### Kal Solution 2: Same Array and Different Indexes O(logn)
 > even(first occurrence) odd(second occurrence) Target odd(first occurrence) even (second occurrence)
 
 
@@ -108,9 +103,7 @@ Array.prototype.appearOne = function() {
 ```
 
 
-##### Solution 3:
-
-O(n)
+##### Kal Solution 3: O(n)
 
 *hints*
 
@@ -155,7 +148,7 @@ distinct integers
 * sorted array
 * distinct integers
 
-For the algorithm will be used, it is best practice to keep same algorithm. Instead of mixing binary search with linear search. Also another import thing to remember. How to manage the trade off between efficiency and manageability of your code. Like for these questions, we you array are not distinct, we cannot stick to binary search anymore. In this case, we could use linear search instead of binary search.
+>For the algorithm will be used, it is best practice to keep same algorithm. Instead of mixing binary search with linear search. Also another import thing to remember. How to manage the trade off between efficiency and manageability of your code. Like for these questions, we you array are not distinct, we cannot stick to binary search anymore. In this case, we could use linear search instead of binary search.
 
 
 ##### Solution1 O(n)
