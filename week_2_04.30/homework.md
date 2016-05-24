@@ -2,7 +2,7 @@
 
 ## Queue and Stack
 
-#### 7.
+### 7.
 
 Find missing parenthesis in a given expression – 2 * ( 3 + 5(sasdfasdfasd)
 
@@ -15,7 +15,7 @@ Find missing parenthesis in a given expression – 2 * ( 3 + 5(sasdfasdfasd)
 
 Solutions:
 
-##### Solution 1:
+##### My Solution O(n)
 
 O(n)
 
@@ -52,7 +52,7 @@ String.prototype.missParenth = function() {
 
 ```
 
-#### Kal Solution 1
+#### Kal Solution1 O(n)
 > using counter
 
 **hints**
@@ -72,7 +72,6 @@ String.prototype.missParenth = function() {
       --count;
     }
   }
-  console.log(count);
   if ( count > 0) {
     return 'missing close parenthesis';
   }
@@ -87,11 +86,11 @@ String.prototype.missParenth = function() {
 '-2*(3+5(sasdfasdfasd)'.missParenth();
 ```
 
-#### Kal Solution 2
+#### Kal Solution2 O(n)
 > using stack structure
 
 **hints**
- * stack structure
+ * **stack structure**
  * loop through the string
    * '(' push to stack
    * if ')' pop stack
@@ -173,7 +172,7 @@ String.prototype.evaluate = function() {
 '2*3+4'.evaluate();
 ```
 
-#### Kal Solution
+#### Kal Solution O(2n)
 >using stack
 
 **hints**
@@ -220,6 +219,34 @@ String.prototype.evaluate = function() {
 '2*3+4'.evaluate();
 ```
 
+```javascript
+String.prototype.evaluate = function() {
+  // initialize variables
+  var stack  = [];
+  var sum = 0;
+
+  // core code
+  for (var i = 0; i < this.length; i++) {
+
+    if (parseInt(this.charAt(i))) {
+      stack.push(parseInt(this.charAt(i)));
+    }
+
+    if (this.charAt(i) === '*') {
+      stack.push(stack.pop() * this.charAt(i + 1));
+      i = i + 1;
+    }
+  }
+
+  while (stack.length) {
+    sum += stack.pop();
+  }
+  return sum;
+};
+
+'2*3+4'.evaluate();
+```
+
 
 
 #### 9.
@@ -250,14 +277,14 @@ Array.prototype.reverseStack = function() {
     this.push(temp);
     temp = null;
     eleLength = this.length;
-  }
+  };
 
   var tempArrPop = function() {
     while(tempArr.length > 1) {
       this.push(tempArr.pop());
     }
     temp = tempArr.pop();
-  }
+  };
 
  tempArrPush.apply(this);
 
