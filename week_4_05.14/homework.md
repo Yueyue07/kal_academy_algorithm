@@ -216,7 +216,7 @@ String.prototype.replace = function() {
     }
   }
 
-  return replaceStr
+  return replaceStr;
 
 };
 
