@@ -107,3 +107,34 @@ Work on Last Week's homework
 Queue: enqueue; dequeue
 
 ------
+
+## Week 5 05.21
+
+
+### Class Content
+
+**Key Notes**:
+
+1. Array Sort Algorithms
+   * Inefficient Sort Methods O(n^2): selection sort, insertion sort, bubble sort
+
+   * Efficient Sort: O(nlogn)
+      * Merge Sort
+
+      * Quick Sort
+
+      * Heap Sort
+
+2. Merge Sort VS Quick Sort
+    * Merge Sort: Running time always O(nlogn); Require extra space
+    * Quick Sort: Average Running time: O(nlogn); Worst Running time: O(n^2) (max and min value as pivot); Don't need extra space
+
+3. Dynamic Programming VS Recursion
+
+
+----
+**Class Example**:
+
+Merge Sort; Quick Sort; fib(n) Dynamic programming; fib(n) Recursion
+
+------
