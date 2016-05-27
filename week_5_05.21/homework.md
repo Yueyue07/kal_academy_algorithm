@@ -2,6 +2,86 @@
 
 ## Strings
 
+### 5. 1.	Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
+```
+0, 1, 2,      0, 0, 0,
+3, 0, 5,  =>  0, 0, 0,
+6, 7, 8       0, 0, 8
+```
+
+Solutions:
+
+```javascript
+var zeroMatrix = function(matrix) {
+ // Define Variable
+ var rowZero, colZero;
+
+ // zeroRow Function
+ function zeroRow(row, matrix) {
+   for (var i = 0; i < matrix[0].length; i++) {
+     matrix[row][i] = 0;
+   }
+ }
+
+
+ // zeroColumn Function
+ function zeroColumn(col, matrix) {
+   for (var j = 0; j < matrix.length; j++) {
+     matrix[j][col] = 0;
+   }
+ }
+
+ // Loop through the first row and column to check whether has zero elements
+ for (var i = 0; i < matrix.length; i++) {
+   if (matrix[i][0] === 0) {
+     colZero = true;
+     break;
+   }
+ }
+
+ for (var j = 0; j < matrix[0].length; j++) {
+   if (matrix[0][j] === 0) {
+     rowZero = true;
+     break;
+   }
+ }
+
+ // Traverse the entire matrix to save indexed of zero value to its first row and first column
+for (var i = 1; i < matrix.length; i++) {
+  for (var j = 1; j < matrix[0].length; j++) {
+    if (matrix[i][j] === 0 ) {
+      matrix[0][j] = 0;
+      matrix[i][0] = 0;
+    }
+  }
+}
+
+ for (var i = 1; i < matrix.length; i++) {
+   if (matrix[i][0] === 0) {
+     zeroRow(i, matrix);
+   }
+ }
+
+ for (var j = 1; j < matrix[0].length; j++) {
+   if (matrix[0][j] === 0 ) {
+     zeroColumn(j, matrix);
+   }
+ }
+
+ if (rowZero) {
+   zeroRow(0, matrix);
+ }
+
+ if (colZero) {
+   zeroColumn(0, matrix);
+ }
+
+ return matrix;
+
+};
+
+```
+
 ### 6. Given two sequences, print longest common subsequence LCS for input Sequences “ABCDGH” and “AEDFHR” is “ADH” of length 3. LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4.
 
 ```javascript
