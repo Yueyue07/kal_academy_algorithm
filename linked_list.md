@@ -1,6 +1,20 @@
 Linked List
 --------
-Node has two properties: one is value;  another is pointer to next node
+* Node has two properties: one is value;  another is pointer to next node
+
+* We can only access other nodes of LinkedList through its head
+
+**Methods of LinkedList**:
+
+* isHeadEmpty
+* size O(n)
+* append O(n)
+* prepend O(1)
+* contains O(n)
+* remove O(n)
+* reverse O(n)
+
+
 
 ```
 [10] -> [20] -> [30] -> null
@@ -8,9 +22,11 @@ Node has two properties: one is value;  another is pointer to next node
 ```javascript
 var LinkedList = function () {
   this.head = null;
-}
+};
 
-LinkedList.prototype.isEmpty = function() {
+
+// method: isEmpty, size, append, prepend, contains remove
+LinkedList.prototype.isHeadEmpty = function() {
   return this.head === null;
 };
 
@@ -48,9 +64,9 @@ LinkedList.prototype.append = function(value) {
 LinkedList.prototype.prepend = function(value) {
   var node = {
     value: value,
-    next: this.head
+    next: this.head // save old head to next
   };
-  this.head = node;
+  this.head = node; // point head to newly inserted head
 };
 
 LinkedList.prototype.contains = function(value) {
@@ -82,39 +98,42 @@ LinkedList.prototype.remove = function(value) {
     previous = current;
     current = current.next;
   }
-  previous.next = current.next;
+  previous.next = current.next; // connect
 };
+
+LinkedList.prototype.reverse = function() {
+  // edge case
+  if (!this.head) return null;
+  if (!this.head.next) return this.head;
+
+  // Define Variable
+  var previousNode = null, restList, currentNode = this.head;
+
+  while(currentNode.next) {
+    // keep rest list
+    restList = currentNode.next;
+    // point next to previous Node
+    currentNode.next = previousNode;
+    // save current node as previous node for next node
+    previousNode = currentNode;
+    // currentNode return back to previous order
+    currentNode = restList;
+  }
+
+  currentNode.next = previousNode;
+  this.head = currentNode;
+  return this.head;
+}
 
 
 
 var ll = new LinkedList();
 
-ll.prepend(1);
+ll.append(1);
+ll.append(2);
+ll.append(3);
 
+ll.reverse();
 
-```
-
-Reverse LinkedList
----------------
-```javascript
-var reverseLinkedList = function(head) { // only input head for the sake of Linked List
-  // edge case
-  if (head === null) {return null}; // empty list
-  if (head.next === null) {return head}; // one node
-  // Define Pointer
-  var prev = null;
-
-  while(head.next) {
-    var next = head.next; // keep list
-    head.next = prev; // move pointer
-    prev = head; // pre set to head
-    head = next;
-  }
-
-  head.next = prev;
-
-  return head;
-
-};
 
 ```
