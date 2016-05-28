@@ -159,3 +159,54 @@ String.prototype.longestCommonSub = function(str) {
 'AGGTAB'.longestCommonSub('GXTXAYB'); // 'GTAB'
 
 ```
+
+###8 1.	Remove spaces from a given string in O(n) running time and only one traversal of a string.
+
+```
+Input: “I     love     ice   cream”
+Output: “Iloveicecream”
+```
+
+```javascript
+String.prototype.removeSpace = function() {
+  // edge case
+  if (!this) return null;
+
+  // define variables
+  var count = 0;
+
+  // core code
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] !== ' ' ) {
+      this[count] = this [i]; // JavaScript String is Immutable; This code doesn't work
+      count++;
+    }
+  }
+  return this;
+};
+```
+
+```javascript
+String.prototype.removeSpace = function() {
+  // edge case
+  if (!this) return null;
+
+  // define variables
+  var count = 0, str = ''; // JavaScript String is Immutable; Has to create a new string
+
+  // core code
+  for (var i = 0; i < this.length; i++) {
+    if (this.charAt(i) !== ' ') {
+      str += this.charAt(i);
+    }
+  }
+
+  return str;
+};
+```
+
+###9 Find all distinct palindromic sub-strings of a given string
+
+```
+
+```
