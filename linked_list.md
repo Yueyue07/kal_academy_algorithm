@@ -8,11 +8,11 @@ Linked List
 
 * isHeadEmpty
 * size O(n)
-* append O(n)
-* prepend O(1)
+* `append O(n)`
+* `prepend O(1)`
 * contains O(n)
-* remove O(n)
-* reverse O(n)
+* `remove O(n)`
+* `reverse O(n)`
 
 
 
@@ -48,7 +48,7 @@ LinkedList.prototype.append = function(value) {
     next: null
   };
 
-  if (this.isEmpty()) {
+  if (this.isHeadEmpty()) {
     this.head = node;
     return;
   }
@@ -81,6 +81,7 @@ LinkedList.prototype.contains = function(value) {
   return false;
 }
 
+/* Remove Node In LinkedList */
 LinkedList.prototype.remove = function(value) {
   if (!this.contains(val)) {
     return;
@@ -101,29 +102,27 @@ LinkedList.prototype.remove = function(value) {
   previous.next = current.next; // connect
 };
 
+// head->1 -> 2 -> 3 ->
+// 1 <- 2 <- 3 <- head
+
 LinkedList.prototype.reverse = function() {
   // edge case
   if (!this.head) return null;
   if (!this.head.next) return this.head;
 
   // Define Variable
-  var previousNode = null, restList, currentNode = this.head;
+  var temp = null, current, head = this.head;
 
-  while(currentNode.next) {
-    // keep rest list
-    restList = currentNode.next;
-    // point next to previous Node
-    currentNode.next = previousNode;
-    // save current node as previous node for next node
-    previousNode = currentNode;
-    // currentNode return back to previous order
-    currentNode = restList;
+  while (head) {
+    current = head;
+    head = head.next;
+    current.next = temp;
+    temp = current;
   }
 
-  currentNode.next = previousNode;
-  this.head = currentNode;
+  this.head = current;
   return this.head;
-}
+};
 
 
 
