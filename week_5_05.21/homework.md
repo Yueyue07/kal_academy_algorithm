@@ -91,7 +91,7 @@ for (var i = 1; i < matrix.length; i++) {
 
 Solutions:
 
-#### My Solution O(2n)
+#### My Solution O(n^2)
 
 **hints**
 * create two dictionary with values of their location index
@@ -110,17 +110,13 @@ String.prototype.longestCommonSub = function(str) {
     longestCommonSubStr = new String(),
     dictionary4Result = new Object();
 
-  // create second dictionary for second string
-  for (var i = 0; i < str.length; i++) {
-    if (!dictionary[str.charAt(i)]) {
-      dictionary[str.charAt(i)] = [];
-    }
-    dictionary[str.charAt(i)].push(i);
-  }
+
 
   // traverse through first string and check whether our dictionary include this element
 
   while ((this.length - pointer) >= maxLength) {
+
+    // create dictionary for second string
     for (var i = 0; i < str.length; i++) {
       if (!dictionary[str.charAt(i)]) {
         dictionary[str.charAt(i)] = [];
