@@ -12,7 +12,8 @@ Linked List
 * `prepend O(1)`
 * contains O(n)
 * `remove O(n)`
-* `reverse O(n)`
+* `reverse iteratively O(n)`
+* `reverse recursively`
 
 
 
@@ -104,8 +105,8 @@ LinkedList.prototype.remove = function(value) {
 
 // head->1 -> 2 -> 3 ->
 // 1 <- 2 <- 3 <- head
-
-LinkedList.prototype.reverse = function() {
+/* Reverse Iteratively */
+LinkedList.prototype.reverseIt = function() {
   // edge case
   if (!this.head) return null;
   if (!this.head.next) return this.head;
@@ -124,7 +125,23 @@ LinkedList.prototype.reverse = function() {
   return this.head;
 };
 
+/* Reverse Recursively */
+LinkedList.prototype.reverseRecur = function() {
 
+  function reverse (node) {
+    if (!node.next) {
+      this.head = node;
+      return;
+    }
+    reverse(node.next);
+
+    // statement to execute in recursion
+    var temp = node.next;
+    temp.next = node;
+    node.next = null;
+  };
+  reverse.call(this, this.head);
+};
 
 var ll = new LinkedList();
 
@@ -136,3 +153,6 @@ ll.reverse();
 
 
 ```
+
+Doubly LinkedList
+--------
