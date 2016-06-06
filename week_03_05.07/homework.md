@@ -17,17 +17,29 @@ Example
 
 Solutions:
 
+1. **cannot use additional data structures:** Sort String and then find the duplicated element
+
+
+
+----
+2. One Solution is to create an array of boolean values, where the flag at index i indicates whether
+character i in the alphabet is contained in the string.
+
 **hints**
   * ASII code 0-255 each number represents a string
   * create an array with size of 256
 
-O(n)
+time complexity: O(n)
+space complexity: O(1)
 
 ```javascript
 String.prototype.unique = function() {
+  // negative case
+  if (this.length > 256) return false;
+
   var arrASII = new Array(256);
   for (var i = 0; i < this.length; i++) {
-    if (!arrASII[this.charCodeAt(i)]) {
+    if (!arrASII[this.charCodeAt(i)]) { // flag indicate whether the element is in the string
 
       arrASII[this.charCodeAt(i)] = true;
 
@@ -45,15 +57,40 @@ String.prototype.unique = function() {
 'abbb'.unique()
 
 ```
+-------
+3. dictionary and using JavaScript Object
 
-#### 2.
+```javascript
+String.prototype.unique = function() {
+  // define a dictionary as object with size of string length
+  var dictionary = new Object();
+  //loop through each character in the string
+  for (var i = 0; i < this.length; i++) {
+    if (!dictionary[this.charAt(i)]) {
+      dictionary[this.charAt(i)] = true;
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
 
-Given two strings, write a method to decide if one is a permutation of the other?
+'abcdef'.unique()
+//true
+'abbb'.unique()
+//false
+```
+
+#### 2. Given two strings, write a method to decide if one is a permutation of the other?
 
 ```javascript
 'abcdef'.permute('fedcab');
 //true
 ```
+
+Solutions:
+
+1. Sort these two strings and then compare the each character of these two strings
 
 **hints**
   * sorted string
@@ -94,9 +131,41 @@ String.prototype.permute = function(string) {
 'abcdef'.permute('fedcab');
 ```  
 
-#### 3.
+2. using dictionary and JavaScript Object
 
-Write a method to replace all spaces in a string with ‘%20’.
+O(3n)
+
+```javascript
+String.prototype.permute = function (string) {
+  if (this.length !== string.length)  return false;
+
+  var dictionary = new Object();
+  for (var i = 0; i < this.length; i++) {
+    if (!dictionary[this.charAt(i)]) { // initializing value as 1
+      dictionary[this.charAt(i)] = 1;
+    } else {
+      dictionary[this.charAt(i)] += 1;    
+    }
+  }
+
+  for (var j = 0; j < string.length; j++) {
+    if (!dictionary[string.charAt(j)]) {
+      return false;
+    }
+      dictionary[string.charAt(j)] -= 1;      
+  }
+
+  for (key in dictionary) {
+    if (dictionary[key] !== 0) return false;
+  }
+
+  return true;
+
+};
+'abcdef'.permute('fedcab');
+```
+
+#### 3.Write a method to replace all spaces in a string with ‘%20’.
 
 Example
 
@@ -110,24 +179,52 @@ Solutions
 **hints**
   * split the string into array
   * loop through array
-  * find the blank space and replace it with %20 
+  * find the blank space and replace it with %20
 
-O(n)
+
+#### Solution 1 A combination of Array and String
+O(3n)
 
 ```javascript
 
 String.prototype.replace = function() {
-   var strArr = this.split('');
-    for (var i = 0; i < strArr.length; i++) {
+   var strArr = this.split(''); // O(n)
+    for (var i = 0; i < strArr.length; i++) { // O(n)
       if (strArr[i] === ' ') {
         strArr[i] = null;
         strArr[i] = '%20';
       }
     }
-    return strArr.join('');
+    return strArr.join(''); // O(n)
 };
 
 'a b'.replace();
 // 'a%20b'
+
+```
+
+#### Solution 2
+
+O(n)
+
+```javascript
+String.prototype.replace = function() {
+  // initializing
+  var replaceStr = new String();
+
+  // Loop Through String and Check space
+  for (var i = 0; i < this.length; i++) {
+    if (this.charAt(i) === ' ') {
+      replaceStr = replaceStr + '%20';
+    } else {
+      replaceStr = replaceStr + this.charAt(i);
+    }
+  }
+
+  return replaceStr;
+
+};
+
+'a b'.replace();
 
 ```
