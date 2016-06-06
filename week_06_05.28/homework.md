@@ -8,9 +8,11 @@
 
 ```
 1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 1
-s    s    fs        f         f
+s    s    s    s
+f         f          f        f
 4 -> 6 -> 5 -> 5 -> 6 -> 4
-s    s    sf        f         f
+s    s    s    s
+f         f         f         f
 ```
 
 **Solution 1 (using stack)**
@@ -59,10 +61,57 @@ function isLLPalindrome (ll) {
 
 **Solution 2(reverse linked list)**
 
-### 11. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets.
+### 11. Write an algorithm to determine if a linked list is circular. FOLLOW UP: Determine where the circle meets.
+
+```
+input: 1 -> 2 -> 3 ->4 -> 5 -> 6
+                     |         |
+                     9 <- 8 <- 7
+```
+
+**hints**
+* slow pointer
+* fast pointer
+
+```javascript
+function isCircularLinkedList(head) {
+  // edge case
+  if(!head || !head.next) return null;
+
+  // define variables
+  var slow = head.next, fast = head.next.next;
+
+  // core code
+  while(fast) {
+    if (slow === head) return true;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return false;
+}
+
+function isCircularLinkedList(head) {
+  // edge case
+  if(!head || !head.next) return null;
+
+  // define variables
+  var slow = head.next, fast = head.next.next;
+
+  // core code
+  while(fast) {
+    if (slow === head) return true;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return false;
+}
+
+```
 
 
 ### 12. Clone a linked list with a random pointer.
+
+``
 
 
 ### 13. Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed?
