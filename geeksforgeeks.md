@@ -179,3 +179,48 @@ Array.prototype.findOddEle = function() {
 [1,1,2,4,4].findOddEle();
 // 2
 ```
+
+```javascript
+function RomanNumber (string) {
+  // edge case
+
+  // define variables
+  var dictionary = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50
+  };
+  var stack = [];
+
+  // core code
+  for (var i = 0; i < string.length; i++) {
+    var value = dictionary[string[i]];
+    if (value > 4) {
+      var element = stack.pop();
+      if (element === 1) {
+        var sum = value - element;
+        stack.push(sum);
+      }
+      if (element > 4) {
+        var sum = value + element;
+        stack.push(sum);
+      }
+      if (element === undefined) {
+        stack.push(value);
+      }
+
+    } else {
+      stack.push(value);
+    }
+  }
+
+  var number = 0;
+  // add value in stack together
+  while (stack.length) {
+    number += stack.pop();
+  }
+
+  return number;
+}
+```
