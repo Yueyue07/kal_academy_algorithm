@@ -3,19 +3,18 @@ Binary Search Tree
 
 ```javascript
 
-var TreeNode = function(value) {
-  this.value = value;
-  this.left = null;
-  this.right = null;
-};
-
-var BST = function() {
+function BinarySearchTree () {
   this.root = null;
-};
+}
 
 // insert node
-BST.prototype.insert = function(value) {
-  var newNode = new TreeNode(value);
+BinarySearchTree.prototype.insert = function(value) {
+  var newNode = {
+    value: value,
+    left: null,
+    right: null
+  };
+  console.log(value);
   if(!this.root) {
     this.root = newNode;
     return this.root;
@@ -26,7 +25,7 @@ BST.prototype.insert = function(value) {
     if (value < currentNode.value) {
       if (!currentNode.left) {
         currentNode.left = newNode;
-        break;
+        return this.root;
       } else {
         currentNode = currentNode.left;
       }
@@ -34,15 +33,16 @@ BST.prototype.insert = function(value) {
     if (value > currentNode.value) {
       if (!currentNode.right) {
         currentNode.right = newNode;
-        break;
+        return this.root;
       } else {
         currentNode = currentNode.right;
       }
     }
   }
-
-  return this.root;
-
 };
+
+
+var tree = new BinarySearchTree();
+tree.insert(6);
 
 ```
