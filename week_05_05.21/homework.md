@@ -84,15 +84,75 @@ for (var i = 1; i < matrix.length; i++) {
 
 ### 6. Given two sequences, print longest common subsequence LCS for input Sequences “ABCDGH” and “AEDFHR” is “ADH” of length 3. LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4.
 
-```javascript
+```
+Input: 'ABCDGH', 'AEDFHR'
+Output: 'ADH'
+
+Input: 'AGGTAB', 'GXTXAYB'
+Output: 'GTAB'
+
 'ABCDGH'.longestCommonSub('AEDFHR'); // 'ADH'
 'AGGTAB'.longestCommonSub('AXGTAB'); // 'GTAB'
 ```
 
 Solutions:
 
-#### My Solution O(n^2)
+1.
 
+```javascript
+String.prototype.longestCommonSub = function(str) {
+  // edge case
+
+  // define variables
+  var m = this.length // row
+    , n = str.length; // column
+  var matrix = [];
+
+ // set up matrix built with these two strings
+  for (var i = 0; i <= m; i++) { // row m + 1
+    for (var j = 0; j <= n; j++) { // column n + 1
+      // set first row and first column as 0
+      if (i === 0 || j === 0) {
+        matrix[i,j] = 0;
+      }
+
+      // compare characters of these two strings and set values of matrix
+      if (this[i - 1] === str[j - 1]) {
+        matrix[i,j] = matrix[i-1,j-1] + 1;
+      } else {
+        matrix[i,j] = Math.max(matrix[i-1,j], matrix[i,j-1]);
+      }
+
+    }
+  }
+
+  // print out the longest common sub string
+  var i = m, j = n; var lcarr = [], lcstr = '';
+  while(i > 0 && j > 0) {
+    if(this[i - 1] === str[j - 1]) {
+      lcarr.push(this[i-1]);
+      i--;
+      j--;
+    } else {
+      if (matrix[i - 1,j] > matrix[i,j - 1]) {
+        i--;
+      } else {
+        j--;
+      }
+    }
+  }
+
+  while(lcarr.length) {
+    lcstr += lcarr.pop();
+  }
+
+  return lcstr;
+};
+
+```
+
+
+2.
 **hints**
 * create two dictionary with values of their location index
 * traverse the first dictionary
@@ -163,6 +223,7 @@ Input: “I     love     ice   cream”
 Output: “Iloveicecream”
 ```
 
+Solution 1:
 ```javascript
 String.prototype.removeSpace = function() {
   // edge case
@@ -173,6 +234,7 @@ String.prototype.removeSpace = function() {
 
   // core code
   for (var i = 0; i < this.length; i++) {
+    // ! below code doesn't work because string is immutable
     if (this[i] !== ' ' ) {
       this[count] = this [i]; // JavaScript String is Immutable; This code doesn't work
       count++;
@@ -182,6 +244,7 @@ String.prototype.removeSpace = function() {
 };
 ```
 
+Solution 2:
 ```javascript
 String.prototype.removeSpace = function() {
   // edge case
@@ -200,9 +263,60 @@ String.prototype.removeSpace = function() {
   return str;
 };
 ```
+Solution 3:
+
+```javascript
+'i love icecream'.replace(,'');
+
+```
+
+
 
 ###9 Find all distinct palindromic sub-strings of a given string
 
 ```
+Input: str = "abaaa"
+Output:  Below are 5 palindrome sub-strings
+a
+aa
+aaa
+aba
+b
+```
+
+`Check A String is Palindrome`
+
+```
+Input: 'abba'
+Output: true
+
+Input: 'abcdcba'
+Output: true
+
+Input: 'abcca'
+Output: false
+```
+
+time complexity: O(n) memory complexity: O(1)
+```javascript
+function isPalindromic(str) {
+  // edge case
+  if (!str) return null;
+
+  // define variables
+  var i = 0, j = str.length - 1;
+
+  // core code
+  while ( i < j) {
+    if (str[i] !== str[j]) {
+      return false;
+    }
+    i++;
+    j--;
+  }
+
+  return true;
+
+}
 
 ```
