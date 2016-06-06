@@ -25,24 +25,6 @@ var LinkedList = function () {
   this.head = null;
 };
 
-
-// method: isEmpty, size, append, prepend, contains remove
-LinkedList.prototype.isHeadEmpty = function() {
-  return this.head === null;
-};
-
-// [10] -> [20] -> [30] -> null
-LinkedList.prototype.size = function() {
-  var current = this.head;
-  var count = 0;
-
-  while (current) {
-    count++;
-    current = current.next;
-  }
-  return count;
-};
-
 LinkedList.prototype.append = function(value) {
   var node = {
     value: value,
@@ -61,6 +43,24 @@ LinkedList.prototype.append = function(value) {
   }  
   current.next = node;
 };
+
+// method: isEmpty, size, append, prepend, contains remove
+LinkedList.prototype.isHeadEmpty = function() {
+  return this.head === null;
+};
+
+// [10] -> [20] -> [30] -> null
+LinkedList.prototype.size = function() {
+  var current = this.head;
+  var count = 0;
+
+  while (current) {
+    count++;
+    current = current.next;
+  }
+  return count;
+};
+
 
 LinkedList.prototype.prepend = function(value) {
   var node = {
@@ -125,23 +125,6 @@ LinkedList.prototype.reverseIt = function() {
   return this.head;
 };
 
-/* Reverse Recursively */
-LinkedList.prototype.reverseRecur = function() {
-
-  function reverse (node) {
-    if (!node.next) {
-      this.head = node;
-      return;
-    }
-    reverse(node.next);
-
-    // statement to execute in recursion
-    var temp = node.next;
-    temp.next = node;
-    node.next = null;
-  };
-  reverse.call(this, this.head);
-};
 
 var ll = new LinkedList();
 
@@ -153,6 +136,35 @@ ll.reverse();
 
 
 ```
+
+Reverse Singly Linked List Using Recursion
+--------
+```javascript
+
+var ll = new LinkedList();
+
+ll.append(1);
+ll.append(2);
+ll.append(3);
+
+var head = ll.head;
+
+function reverseRecur (node) {
+  if (node.next === null) {
+    head = node;
+    return;
+  }
+  reverseRecur(node.next);
+  // statement
+  node.next.next = node;
+  node.next = null;
+}
+reverseRecur(ll.head);
+
+```
+
+Reverse Singly Linked List Using Iteration
+-----
 
 Doubly LinkedList
 --------
