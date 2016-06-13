@@ -224,3 +224,49 @@ function RomanNumber (string) {
   return number;
 }
 ```
+
+### Find substring of a string and replace with new string
+
+```javascript
+String.prototype.replaceStr = function(subStr,newStr) {
+  // edge case
+  if (!this) return null;
+  if (subStr.length > this.length) return null;
+  if (!subStr) return this;
+
+  // define variables
+  var str = '';
+
+  // main code
+  for (var i = 0; i <this.length; i++) {
+      for (var j = 0; j < subStr.length; j++, i++) {
+        if (this[i] !== subStr[j]) {
+          break;
+        }
+      }
+      if (j === subStr.length) {
+        console.log('find match pattern in original string at location');
+        break;
+      }    
+  }
+
+  // replace with new string
+  var startIndex = i - subStr.length;
+  for (var j = 0; j < this.length - subStr.length + newStr.length; j++) {
+
+    if (j === startIndex) {
+      for (var i = 0; i < newStr.length; i++) {
+        str += newStr[i];
+        j = j + 1;
+      }
+      j = j - 1;
+    } else {
+      str += this[j];
+    }
+  }
+
+  return str;
+};
+
+'defga'.replaceStr('fg', 'bc');
+```
