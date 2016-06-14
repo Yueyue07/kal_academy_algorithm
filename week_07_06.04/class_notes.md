@@ -100,9 +100,6 @@ ll.append(8);
 duplicateElementLinkedList(ll.head);
 ```
 
-
-
-
 * Copy Random Pointer of Linked List
 
 * Arithmetic Progression
