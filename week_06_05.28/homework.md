@@ -16,8 +16,8 @@ f         f         f         f
 ```
 
 **Solution 1 (using stack)**
-* use slow(1 node) and fast(2 nodes) pointers
-* save slow pointing node into stack until fast point to the end
+* use **slow(1 node) and fast(2 nodes) pointers**
+* save slow pointing node into **stack** until fast point to the end
 * pop stack element to compare with slow pointing node value
 
 ```javascript
