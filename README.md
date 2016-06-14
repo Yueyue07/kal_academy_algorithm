@@ -187,7 +187,7 @@ Output: “Iloveicecream”**
 * Binary Tree and Binary Search Tree
 
 ------
-**Homework String**:
+**Homework LinkedList**:
 10. Write an algorithm to determine if a linkedlist is a palindrome
 
 11. **Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets.**
@@ -197,3 +197,15 @@ Output: “Iloveicecream”**
 13. **Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed?**
 
 14. **Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed?**
+
+## Week 8 06.11
+
+**Key Notes**
+* String
+* String is Immutable
+* String Flyweight
+
+---
+**Class Example**
+1. reverse a string
+2. swap two variable: with temp variable;  without temp variable
