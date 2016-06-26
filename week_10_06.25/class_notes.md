@@ -63,3 +63,45 @@ result: 2^2 + 2 = 6
  ~: 1011
  result: 8 + 0 + 2 + 1 = 11
 ```
+
+**Collect Selection of Options**
+> Multiple Options Select Results through Bit Manipulation
+
+```
+option1: select 0: 2^0  0001
+option2: select 1: 2^1  0010
+option3: select 2: 2^2  0100
+option4:        
+
+step1:
+
+option1: 0001
+option2: 0010
+|      : 0011
+option2: 0100
+|      : 0111
+result : 2^2 + 2^1 + 1 = 7
+
+
+collectionResult(7)
+
+step2:
+Decide which option is chosen
+
+result:   0111
+option1:  0001
+&:        0001  select
+
+result:   0111
+option2:  0010
+&:        0010  select
+
+result:   0111
+option3:  0100
+&:        0100  select
+
+
+result:   0111
+option4:  1000
+&:        0000  
+```
