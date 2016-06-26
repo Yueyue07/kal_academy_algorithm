@@ -138,7 +138,8 @@ Array.prototype.quickSortArray = function() {
 [1,2,9,3,2,5,14,0].quickSortArray();
 ```
 
-##### (Solution from Wiki)[https://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Quicksort#JavaScript]
+#####
+(Solution from Wiki)[https://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Quicksort#JavaScript]
 
 ```javascript
 function qsort(a) {
