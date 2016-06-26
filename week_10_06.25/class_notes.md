@@ -2,7 +2,7 @@
 
 ## Bits Manipulation
 
-**Decimal Number converts to Binary Number**
+### Decimal Number converts to Binary Number
 > Convert 13 to Binary Number
 
 ```
@@ -16,7 +16,7 @@ verification: 1 * 2^3 + 1 * 2^2 + 0 + 1 * 2^1 = 8 + 4 + 1 = 13
 ```
 
 
-## Binary Operators
+### Binary Operators
 
 **&** :
 ```
@@ -64,7 +64,7 @@ result: 2^2 + 2 = 6
  result: 8 + 0 + 2 + 1 = 11
 ```
 
-**Collect Selection of Options**
+### Collect Selection of Options
 > Multiple Options Select Results through Bit Manipulation
 
 ```
@@ -104,4 +104,31 @@ option3:  0100
 result:   0111
 option4:  1000
 &:        0000  
+```
+
+### Bit Shift
+
+**<<**
+shit right
+
+```
+4 << 3
+
+4:       00000100
+4 << 3:  00100000
+2^(2+3) = 32
+```
+
+---
+
+**>>**
+shift left
+
+```
+7 >> 2
+
+7:    0111
+7>>2: 0001
+2^(2 - 2) + 2^(1 - 2) + 2^(0 - 2)
+1
 ```
