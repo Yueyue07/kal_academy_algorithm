@@ -41,6 +41,7 @@ result: 2^2 + 2 = 6
 ----
 
 **^**
+Use for Identifying Unique Number
 ```
 4 ^ 2 = 6
 
@@ -131,4 +132,31 @@ shift left
 7>>2: 0001
 2^(2 - 2) + 2^(1 - 2) + 2^(0 - 2)
 1
+```
+
+### isPrime
+
+```javascript
+function isPrime (number) {
+  // edge case
+  if (number === 1) return false;
+  if (number === 2) return true;
+  if (number & 1 === 0) return false;
+
+  // define variables
+    var i = 2,
+      stop = Math.ceil(Math.sqrt( number));
+
+  // core code
+  while (i <= stop) {
+    if ( number % i === 0) {
+      return false;
+    }
+    i++;
+  }
+
+  return true;
+
+}
+
 ```
