@@ -1,48 +1,57 @@
 Binary Search Tree
-----------
+----------------
+
+Insert Node Without Considering Adjusting
 
 ```javascript
 
-function BinarySearchTree () {
+var BST = function(){
   this.root = null;
 }
 
-// insert node
-BinarySearchTree.prototype.insert = function(value) {
-  var newNode = {
-    value: value,
-    left: null,
-    right: null
-  };
-  console.log(value);
-  if(!this.root) {
-    this.root = newNode;
-    return this.root;
-  }
-  var currentNode = this.root;
+BST.prototype.createNode = function (value) {
+ var node = {};
+ node.Value = value;
+ node.Right = null;
+ node.Left = null;
 
-  while(currentNode) {
-    if (value < currentNode.value) {
-      if (!currentNode.left) {
-        currentNode.left = newNode;
-        return this.root;
-      } else {
-        currentNode = currentNode.left;
-      }
-    }
-    if (value > currentNode.value) {
-      if (!currentNode.right) {
-        currentNode.right = newNode;
-        return this.root;
-      } else {
-        currentNode = currentNode.right;
-      }
-    }
-  }
+ return node;
 };
 
+BST.prototype.insertNode = function(value) {
 
-var tree = new BinarySearchTree();
-tree.insert(6);
+  if(!this.root)
+    return this.root = this.createNode(value);
+
+  var current = this.root, temp, parent;
+
+
+  while (current)
+  {
+     if (current.Value < value) {
+       parent = current;
+       current = parent.Right;
+     } else {
+       parent = current;
+       current = parent.Left;
+     }
+  }
+
+  if (parent.Value < value) {
+    parent.Right = this.createNode(value);
+  } else {
+    parent.Left = this.createNode(value);
+  }
+
+  return this.createNode(value);
+
+};
+```
+
+-------
+Traverse Binary Search Tree Depth-First: **PreOrder**
+
+```javascript
+
 
 ```
