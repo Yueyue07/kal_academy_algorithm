@@ -46,3 +46,38 @@ var tree = new BinarySearchTree();
 tree.insert(6);
 
 ```
+
+Traverse Tree
+--------------
+
+## In Order - Depth First
+
+```javascript
+var InOrderProcess = function(root) {
+  var stack = [];
+  stack.push(root);
+
+  while (stack.length > 0) {
+    var node = stack.pop();
+
+    if (!node.right || !node.left) {
+      node.value ? console.log(node.value) : console.log(node);
+    } else {
+      if (node.right) {
+        stack.push(node.right);
+      }
+
+      if (node.value) {
+        stack.push(node.value);
+      }
+
+      if (node.left) {
+        stack.push(node.left);
+      }
+    }
+  }
+
+}
+
+
+```
