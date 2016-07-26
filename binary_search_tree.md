@@ -12,7 +12,7 @@ var BST = function(){
 BST.prototype.createNode = function (value) {
  var node = {};
  node.Value = value;
- node.Right = null;
+ node.Right= null;
  node.Left = null;
 
  return node;
@@ -49,15 +49,36 @@ BST.prototype.insertNode = function(value) {
 ```
 
 -------
-Traverse Binary Search Tree Depth-First: **PreOrder**
+Traverse Binary Search Tree
 
+## Pre Order -  Depth First
 ```javascript
+var PreOrderProcess = function(root){
+  var stack = [];
+  stack.push(root);
 
-
+  while (stack.length > 0) {
+    console.log(stack)
+    var node = stack.pop();
+    console.log(node);
+    if (!node.Right || !node.Left) {
+      console.log(true);
+      node.value ? console.log(node.value) : console.log(node);
+    } else {
+      if (node.Right) {
+        stack.push(node.Right);
+      }
+      if (node.Left) {
+        stack.push(node.Left);
+      }
+      stack.push(node.value);   
+    }
+  }
+};
 ```
 
-Traverse Tree
---------------
+
+
 
 ## In Order - Depth First
 
@@ -69,24 +90,28 @@ var InOrderProcess = function(root) {
   while (stack.length > 0) {
     var node = stack.pop();
 
-    if (!node.right || !node.left) {
+    if (!node.Right || !node.Left) {
       node.value ? console.log(node.value) : console.log(node);
     } else {
-      if (node.right) {
-        stack.push(node.right);
+      if (node.Right) {
+        stack.push(node.Rights);
       }
 
       if (node.value) {
         stack.push(node.value);
       }
 
-      if (node.left) {
-        stack.push(node.left);
+      if (node.Left) {
+        stack.push(node.Left);
       }
     }
   }
 
 }
+```
+
+## Post Order - Depth First
+```javascript
 
 
 ```
