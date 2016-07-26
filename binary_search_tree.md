@@ -1,7 +1,7 @@
 Binary Search Tree
 ----------------
 
-## Insert Node Without Considering Adjusting
+## Insert Node
 
 ```javascript
 
@@ -49,7 +49,7 @@ BST.prototype.insertNode = function(value) {
 ```
 
 -------
-## Traverse Binary Search Tree With Iteration
+## Traverse Binary Search Tree Through Iteration
 
 ```
  2
