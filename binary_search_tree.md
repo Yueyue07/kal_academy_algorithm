@@ -64,9 +64,12 @@ Output
 ```
 ```javascript
 var PreOrderTraverse = function(root){
+  // edge case
+  if (!root) return null;
+  // define variables
   var stack = [];
-  stack.push(root);
-
+  stack.push(root); 
+  // core code
   while (stack.length > 0) {
     var node = stack.pop();
     if (!node.Right || !node.Left) {
@@ -96,9 +99,12 @@ Output
 
 ```javascript
 var InOrderTraverse = function(root) {
+  // edge case
+  if(!root) return null;
+  // define variables
   var stack = [];
   stack.push(root);
-
+  // core code
   while (stack.length > 0) {
     var node = stack.pop();
 
