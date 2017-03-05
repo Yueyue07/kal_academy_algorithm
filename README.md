@@ -93,7 +93,7 @@ Work on Last Week's homework
 
 2. 1 bit : 1 / 0 (lowest memory); 1 byte: 8 bits
 
-3. int: 32 bits / 8 bytes; long: 64 bits / 8 bytes
+3. int: 32 bits / 4 bytes; long: 64 bits / 8 bytes
 
 4. int[5]: array of size 160 (160 bits)
 
